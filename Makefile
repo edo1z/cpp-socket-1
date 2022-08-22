@@ -15,7 +15,7 @@ $(BUILD_DIR)/%.o: src/%.cpp
 	clang++ -c -o $@ $(CPPFLAGS) $<
 
 do:
-	@bin/main
+	@bin/main server tcp localhost 5555
 clean:
 	rm -rf bin
 	mkdir bin
