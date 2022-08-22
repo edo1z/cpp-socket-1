@@ -1,0 +1,18 @@
+{
+  "configurations": {
+    "CodeLLDB": {
+      "adapter": "CodeLLDB",
+      "variables": {
+        "BUILDME": {
+          "shell": "cd ${workspaceRoot} && make bin/debug"
+        }
+      },
+      "configuration": {
+        "request": "launch",
+        "program": "${workspaceRoot}/bin/debug",
+        "stdio": [null, null, null]
+      }
+    }
+  }
+}
+
