@@ -40,7 +40,7 @@ size_t mystrlcat(char *dst, const char *src, size_t size)
   return (dlen + (ps - src - 1));
 }
 
-void send_recv_loop(int acc)
+void server_send_recv_loop(int acc)
 {
   char    buf[512], *ptr;
   ssize_t len;
@@ -84,14 +84,14 @@ void accept_loop(int soc)
           (struct sockaddr *) &from, len, hbuf, sizeof(hbuf), sbuf, sizeof(sbuf),
           NI_NUMERICHOST | NI_NUMERICSERV);
       cout << "accept: " << hbuf << ":" << sbuf << endl;
-      send_recv_loop(acc);
+      server_send_recv_loop(acc);
       (void) close(acc);
       acc = 0;
     }
   }
 }
 
-int server_socket(const char *portnm)
+int server_socket(const char *port)
 {
   char            nbuf[NI_MAXHOST], sbuf[NI_MAXSERV];
   struct addrinfo hints, *res0;
@@ -103,7 +103,7 @@ int server_socket(const char *portnm)
   hints.ai_socktype = SOCK_STREAM;
   hints.ai_flags    = AI_PASSIVE;
 
-  if ((errcode = getaddrinfo(NULL, portnm, &hints, &res0)) != 0) {
+  if ((errcode = getaddrinfo(NULL, port, &hints, &res0)) != 0) {
     cerr << "getaddrinfo() ERROR: " << gai_strerror(errcode) << endl;
     return 1;
   }

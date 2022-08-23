@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include "tcp_client.h"
 #include "tcp_server.h"
 using namespace std;
 
@@ -17,12 +18,13 @@ int main(int argc, char* argv[])
   }
   string node_type = argv[1];
   string protocol  = argv[2];
-  string ip        = argv[3];
+  char*  host      = argv[3];
   char*  port      = argv[4];
   if (node_type == "server") {
     cout << "tcp server" << endl;
     tcp_server(port);
   } else {
     cout << "tcp client" << endl;
+    tcp_client(host, port);
   }
 }

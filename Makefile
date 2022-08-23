@@ -14,8 +14,10 @@ $(BUILD_DIR)/debug: $(OBJS)
 $(BUILD_DIR)/%.o: src/%.cpp
 	clang++ -c -o $@ $(CPPFLAGS) $<
 
-do:
+server:
 	@bin/main server tcp localhost 5555
+client:
+	@bin/main client tcp localhost 5555
 clean:
 	rm -rf bin
 	mkdir bin

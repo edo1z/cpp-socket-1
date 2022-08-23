@@ -16,8 +16,6 @@
 #include <iostream>
 using namespace std;
 
-size_t mystrlcat(char *dst, const char *src, size_t size);
-void   server_send_recv_loop(int acc);
-void   accept_loop(int soc);
-int    server_socket(const char *port);
-int    tcp_server(char *port);
+void client_send_recv_loop(int soc);
+int  client_socket(const char *host, const char *port);
+int  tcp_client(char *host, char *port);
